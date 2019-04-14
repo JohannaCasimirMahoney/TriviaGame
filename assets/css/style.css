@@ -18,3 +18,7 @@ body {
 .btn  {
     background-color: #213259;
 }
+
+.option {
+    btn btn-light;
+}

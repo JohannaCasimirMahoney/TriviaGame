@@ -94,7 +94,7 @@ var trivia = {
 
         // creates all the trivia guess options in the html
         $.each(questionOptions, function (index, key) {
-            $('#options').append($('<button class="option btn btn-default">' + key + '</button>'));
+            $('#options').append($('<button class="option btn btn-light">' + key + '</button>'));
         })
 
     },
@@ -114,14 +114,14 @@ var trivia = {
             trivia.result = false;
             clearInterval(trivia.timerId);
             resultId = setTimeout(trivia.guessResult, 1000);
-            $('#results').html('<h3>Out of time! The answer was ' + Object.values(trivia.answers)[trivia.currentSet] + '</h3>');
+            $('#results').html('<h4>Out of time! The answer was ' + Object.values(trivia.answers)[trivia.currentSet] + '</h4>');
         }
         // if all the questions have been shown end the game, show results
         else if (trivia.currentSet === Object.keys(trivia.questions).length) {
 
             // adds results of game (correct, incorrect, unanswered) to the page
             $('#results')
-                .html('<h3>Thank you for playing!</h3>' +
+                .html('<h4>Thank you for playing!</h4>' +
                     '<p>Correct: ' + trivia.correct + '</p>' +
                     '<p>Incorrect: ' + trivia.incorrect + '</p>' +
                     '<p>Unanswered: ' + trivia.unanswered + '</p>' +
@@ -151,7 +151,7 @@ var trivia = {
             trivia.correct++;
             clearInterval(trivia.timerId);
             resultId = setTimeout(trivia.guessResult, 1000);
-            $('#results').html('<h3>Correct!</h3>');
+            $('#results').html('<h3>Correct!</h4>');
         }
         // else the user picked the wrong option, increment incorrect
         else {
@@ -160,7 +160,7 @@ var trivia = {
             trivia.incorrect++;
             clearInterval(trivia.timerId);
             resultId = setTimeout(trivia.guessResult, 1000);
-            $('#results').html('<h3>Try Again! The Answer is ' + currentAnswer + '</h3>');
+            $('#results').html('<h4>Sorry! The Answer is ' + currentAnswer + '</h4>');
         }
 
     },
@@ -172,7 +172,7 @@ var trivia = {
 
         // remove the options and results
         $('.option').remove();
-        $('#results h3').remove();
+        $('#results h4').remove();
 
         // begin next question
         trivia.nextQuestion();
